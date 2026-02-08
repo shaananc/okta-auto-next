@@ -133,6 +133,8 @@ if command -v xcrun >/dev/null 2>&1; then
       --no-open >/dev/null 2>&1 || true
     if [ -d "$DIST_DIR/safari" ]; then
       echo "Wrote $DIST_DIR/safari (open the Xcode project and build once to enable in Safari)."
+      (cd "$DIST_DIR" && zip -qr "okta-auto-next-safari-project.zip" "safari")
+      echo "Wrote $DIST_DIR/okta-auto-next-safari-project.zip"
     else
       echo "Safari converter did not produce output."
     fi
