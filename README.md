@@ -41,6 +41,9 @@ Safari requires building/running the wrapper app once.
 2. Open the Xcode project inside the unzipped folder.
 3. Select scheme **Okta Auto-Next** (the app target), then `Product -> Run`.
 4. In the app window, open Safari extension preferences and enable it.
+5. If Safari doesn’t show the extension, ensure unsigned extensions are allowed:
+   - Safari -> Settings -> Advanced -> enable “Show Develop menu in menu bar”
+   - Safari -> Develop -> enable “Allow Unsigned Extensions”
 
 ## How To Get Artifacts From GitHub
 
