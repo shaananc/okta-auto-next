@@ -1,0 +1,149 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Okta Auto-Next Options</title>
+    <style>
+      :root {
+        --bg: #0b1220;
+        --panel: rgba(255, 255, 255, 0.06);
+        --text: rgba(255, 255, 255, 0.92);
+        --muted: rgba(255, 255, 255, 0.70);
+        --accent: #1f6feb;
+        --border: rgba(255, 255, 255, 0.14);
+      }
+      body {
+        margin: 0;
+        padding: 18px;
+        font: 14px/1.45 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto,
+          Helvetica, Arial;
+        color: var(--text);
+        background: radial-gradient(120% 120% at 30% 10%, #1f2a44 0%, var(--bg) 55%, #070b14 100%);
+      }
+      .wrap {
+        max-width: 720px;
+        margin: 0 auto;
+      }
+      .card {
+        border: 1px solid var(--border);
+        background: var(--panel);
+        border-radius: 14px;
+        padding: 14px;
+      }
+      h1 {
+        font-size: 18px;
+        margin: 0 0 10px;
+      }
+      p {
+        margin: 0 0 10px;
+        color: var(--muted);
+      }
+      label.row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+        padding: 10px 0;
+        border-top: 1px solid rgba(255,255,255,0.10);
+      }
+      label.row:first-of-type {
+        border-top: none;
+      }
+      input[type="number"] {
+        width: 90px;
+        padding: 6px 8px;
+        border-radius: 10px;
+        border: 1px solid var(--border);
+        background: rgba(0,0,0,0.25);
+        color: var(--text);
+      }
+      .right {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      input[type="text"] {
+        width: 240px;
+        padding: 6px 8px;
+        border-radius: 10px;
+        border: 1px solid var(--border);
+        background: rgba(0,0,0,0.25);
+        color: var(--text);
+      }
+      .hint {
+        font-size: 12px;
+        color: var(--muted);
+      }
+      code {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="card">
+        <h1>Okta Auto-Next</h1>
+        <p>
+          Automatically clicks <code>Next</code> after you fill the Okta username field on
+          <code>sso.unimelb.edu.au</code>.
+        </p>
+        <label class="row">
+          <div>
+            <div><strong>Enabled</strong></div>
+            <div class="hint">You can also toggle from the toolbar icon.</div>
+          </div>
+          <div class="right">
+            <input type="checkbox" id="enabled" />
+          </div>
+        </label>
+        <label class="row">
+          <div>
+            <div><strong>Polling interval (ms)</strong></div>
+            <div class="hint">Lower is faster; too low can be noisy. Default 150.</div>
+          </div>
+          <div class="right">
+            <input type="number" id="pollMs" min="50" step="10" />
+          </div>
+        </label>
+        <label class="row">
+          <div>
+            <div><strong>Require non-empty username</strong></div>
+            <div class="hint">Only clicks Next if the username field has a value.</div>
+          </div>
+          <div class="right">
+            <input type="checkbox" id="requireNonEmpty" />
+          </div>
+        </label>
+        <label class="row">
+          <div>
+            <div><strong>Auto-fill username</strong></div>
+            <div class="hint">Stores your username in browser local extension storage.</div>
+          </div>
+          <div class="right">
+            <input type="checkbox" id="autofillUsername" />
+          </div>
+        </label>
+        <label class="row">
+          <div>
+            <div><strong>Username value</strong></div>
+            <div class="hint">Used only when Auto-fill is enabled.</div>
+          </div>
+          <div class="right">
+            <input type="text" id="usernameValue" placeholder="e.g. cohneys" />
+          </div>
+        </label>
+        <label class="row">
+          <div>
+            <div><strong>Overwrite existing username</strong></div>
+            <div class="hint">If disabled, it only fills when the field is empty.</div>
+          </div>
+          <div class="right">
+            <input type="checkbox" id="overwriteUsername" />
+          </div>
+        </label>
+      </div>
+    </div>
+    <script src="options.js"></script>
+  </body>
+</html>

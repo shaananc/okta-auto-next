@@ -1,0 +1,43 @@
+{
+  "manifest_version": 3,
+  "name": "Okta Username Auto-Next (Unimelb)",
+  "version": "0.0.1",
+  "description": "Automatically advances past the Okta username step on sso.unimelb.edu.au. Toggle via toolbar icon or options.",
+  "action": {
+    "default_title": "Okta Auto-Next",
+    "default_icon": {
+      "16": "icons/okta-next-16.png",
+      "32": "icons/okta-next-32.png",
+      "48": "icons/okta-next-48.png",
+      "128": "icons/okta-next-128.png"
+    },
+    "default_popup": "popup.html"
+  },
+  "options_ui": {
+    "page": "options.html"
+  },
+  "icons": {
+    "16": "icons/okta-next-16.png",
+    "32": "icons/okta-next-32.png",
+    "48": "icons/okta-next-48.png",
+    "128": "icons/okta-next-128.png"
+  },
+  "permissions": ["storage", "tabs"],
+  "host_permissions": ["https://sso.unimelb.edu.au/*"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://sso.unimelb.edu.au/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "okta-auto-next-unimelb@local",
+      "strict_min_version": "109.0"
+    }
+  }
+}
